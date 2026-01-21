@@ -1,4 +1,4 @@
-#ifndef WIN_IMPL_BASE_HPP
+Ôªø#ifndef WIN_IMPL_BASE_HPP
 #define WIN_IMPL_BASE_HPP
 #include "stdafx.h"
 #define USE(FEATURE) (defined USE_##FEATURE  && USE_##FEATURE)
@@ -286,8 +286,8 @@ public:
 		ASSERT(pRoot);
 		if (pRoot==NULL)
 		{
-			MessageBox(NULL,_T("º”‘ÿ◊ ‘¥Œƒº˛ ß∞‹"),_T("Duilib"),MB_OK|MB_ICONERROR);
-			ExitProcess(1);
+			MessageBox(NULL,_T("Âä†ËΩΩËµÑÊ∫êÊñá‰ª∂Â§±Ë¥•"),_T("Duilib"),MB_OK|MB_ICONERROR);
+			//ExitProcess(1);
 			return 0;
 		}
 		m_PaintManager.AttachDialog(pRoot);
