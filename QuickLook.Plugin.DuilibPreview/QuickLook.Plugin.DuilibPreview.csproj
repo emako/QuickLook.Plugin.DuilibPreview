@@ -77,13 +77,13 @@
         <Delete Files="$(OutputPath)\QuickLook.Common.pdb" Condition="Exists('$(OutputPath)\QuickLook.Common.pdb')" />
     </Target>
 
-    <ItemGroup>
+    <!--<ItemGroup>
         <Content Include="$(SolutionDir)\x64\UnicodeRelease\DuilibPreview.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <DestinationFolder>$(OutDir)\</DestinationFolder>
             <Link>DuilibPreview.dll</Link>
         </Content>
-    </ItemGroup>
+    </ItemGroup>-->
 
     <ItemGroup>
         <Compile Include="..\GitVersion.cs">
