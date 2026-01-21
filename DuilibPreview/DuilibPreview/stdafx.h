@@ -1,17 +1,17 @@
-// stdafx.h : ±ê×¼ÏµÍ³°üº¬ÎÄ¼şµÄ°üº¬ÎÄ¼ş£¬
-// »òÊÇ¾­³£Ê¹ÓÃµ«²»³£¸ü¸ÄµÄ
-// ÌØ¶¨ÓÚÏîÄ¿µÄ°üº¬ÎÄ¼ş
+// stdafx.h : æ ‡å‡†ç³»ç»ŸåŒ…å«æ–‡ä»¶çš„åŒ…å«æ–‡ä»¶ï¼Œ
+// æˆ–æ˜¯ç»å¸¸ä½¿ç”¨ä½†ä¸å¸¸æ›´æ”¹çš„
+// ç‰¹å®šäºé¡¹ç›®çš„åŒ…å«æ–‡ä»¶
 //
 
 #pragma once
 
-#define WIN32_LEAN_AND_MEAN             //  ´Ó Windows Í·ÎÄ¼şÖĞÅÅ³ı¼«ÉÙÊ¹ÓÃµÄĞÅÏ¢
+#define WIN32_LEAN_AND_MEAN             //  ä» Windows å¤´æ–‡ä»¶ä¸­æ’é™¤æå°‘ä½¿ç”¨çš„ä¿¡æ¯
 
-// Windows Í·ÎÄ¼ş:
+// Windows å¤´æ–‡ä»¶:
 #include <windows.h>
 #include <objbase.h>
 
-// C ÔËĞĞÊ±Í·ÎÄ¼ş
+// C è¿è¡Œæ—¶å¤´æ–‡ä»¶
 #include <stdlib.h>
 #include <string>
 
@@ -19,26 +19,26 @@
 #include "..\\..\\Duilib\\UIlib.h"
 
 using namespace DuiLib;
+//
+//#ifdef UILIB_STATIC
+//
+//#pragma comment(lib, "..\\..\\Lib\\Duilib_uStatic.lib")
+//
+//#else
+//
+//#ifdef _DEBUG 
+//#   ifdef _UNICODE 
+//#       pragma comment(lib, "..\\..\\Lib\\Duilib_ud.lib") 
+//#   else 
+//#       pragma comment(lib, "..\\..\\Lib\\Duilib_d.lib") 
+//#   endif 
+//#else 
+//#   ifdef _UNICODE 
+//#       pragma comment(lib, "..\\..\\Lib\\Duilib_u.lib") 
+//#   else 
+//#       pragma comment(lib, "..\\..\\Lib\\Duilib.lib") 
+//#   endif 
+//#endif
 
-#ifdef UILIB_STATIC
-
-#pragma comment(lib, "..\\..\\Lib\\Duilib_uStatic.lib")
-
-#else
-
-#ifdef _DEBUG 
-#   ifdef _UNICODE 
-#       pragma comment(lib, "..\\..\\Lib\\Duilib_ud.lib") 
-#   else 
-#       pragma comment(lib, "..\\..\\Lib\\Duilib_d.lib") 
-#   endif 
-#else 
-#   ifdef _UNICODE 
-#       pragma comment(lib, "..\\..\\Lib\\Duilib_u.lib") 
-#   else 
-#       pragma comment(lib, "..\\..\\Lib\\Duilib.lib") 
-#   endif 
-#endif
-
-#endif
+//#endif
 

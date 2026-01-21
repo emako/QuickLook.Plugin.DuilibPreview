@@ -2,28 +2,24 @@
   <Configurations>
     <BuildType Name="Debug" />
     <BuildType Name="Release" />
-    <BuildType Name="Static" />
     <BuildType Name="UnicodeDebug" />
     <BuildType Name="UnicodeRelease" />
     <Platform Name="x64" />
   </Configurations>
   <Project Path="DuiLib/DuiLib.vcxproj" Id="e106acd7-4e53-4aee-942b-d0dd426db34e">
     <BuildType Solution="Debug|*" Project="UnicodeDebug" />
-    <BuildType Solution="Release|*" Project="UnicodeRelease" />
   </Project>
   <Project Path="DuilibPreview/DuilibPreview/DuilibPreview.vcxproj" Id="b1b1b73b-612a-408f-a074-33fb0d333d32">
-    <BuildType Project="UnicodeRelease" />
+    <BuildType Solution="Debug|*" Project="UnicodeRelease" />
+    <BuildType Solution="UnicodeDebug|*" Project="UnicodeRelease" />
   </Project>
   <Project Path="QuickLook.Common/QuickLook.Common.csproj">
-    <BuildType Solution="Static|*" Project="Release" />
     <BuildType Solution="UnicodeDebug|*" Project="Release" />
     <BuildType Solution="UnicodeRelease|*" Project="Release" />
-    <Platform Solution="Static|*" Project="x64" />
     <Platform Solution="UnicodeDebug|*" Project="x64" />
     <Platform Solution="UnicodeRelease|*" Project="x64" />
   </Project>
   <Project Path="QuickLook.Plugin.DuilibPreview/QuickLook.Plugin.DuilibPreview.csproj">
-    <BuildType Solution="Static|*" Project="Release" />
     <BuildType Solution="UnicodeDebug|*" Project="Release" />
     <BuildType Solution="UnicodeRelease|*" Project="Release" />
   </Project>
