@@ -1,7 +1,6 @@
 ﻿using QuickLook.Common.Plugin;
 using System;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
@@ -71,7 +70,6 @@ public class Plugin : IViewer
 
         _ = Task.Run(() =>
         {
-            Thread.Sleep(500);
             context.ViewerContent = control;
             context.IsBusy = false;
         });
