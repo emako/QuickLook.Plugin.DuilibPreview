@@ -3,34 +3,53 @@
 #include "PreviewWnd.h"
 #include "StringTools.h"
 
-//  程序入口及Duilib初始化部分 
-int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR lpCmdLine, int nCmdShow)
-{ 
-#ifdef UNICODE
-	CDuiString* filepath = new CDuiString(_W(lpCmdLine));
-#else
-	CDuiString* filepath = new CDuiString(lpCmdLine);
-#endif
-	//CDuiString* filepath = new CDuiString(_T("C:\\Users\\rwh\\Desktop\\新建文件夹\\test1.xml"));
+extern "C" __declspec(dllexport) HWND CreateDuilibPreview(HWND hParent, const WCHAR* xmlPath)
+{
+    CDuiString filepath;
+    filepath = xmlPath;
 
-	if(filepath->IsEmpty()) return ShowHelpInfo();
-	int n = filepath->ReverseFind('\\')+1;
-	if(filepath->Right(4)!= _T(".xml")) return ShowHelpInfo();
+	if(filepath.IsEmpty()) return NULL;
+	int n = filepath.ReverseFind('\\')+1;
+	
+    CPreviewWnd* pPreviewForm = new CPreviewWnd();
+    if( pPreviewForm == NULL ) return NULL; 
 
-	HRESULT Hr = ::CoInitialize(NULL);
-	if( FAILED(Hr) ) return 0;
+    // Use absolute path for skin folder
+    pPreviewForm->SetSkinFile(filepath.Right(filepath.GetLength() - n).GetData());
+    pPreviewForm->SetSkinFolder(filepath.Left(n).GetData());
 
-	 CPreviewWnd* pPreviewForm = new CPreviewWnd();
-     if( pPreviewForm == NULL ) return 0; 
-	 pPreviewForm->SetSkinFile(filepath->Right(filepath->GetLength() - n).GetData());
-	 pPreviewForm->SetSkinFolder(filepath->Left(n).GetData());
-	 SetCurrentDirectory(pPreviewForm->GetSkinFolder().GetData());
-     pPreviewForm->Create(NULL, _T("预览窗口"), UI_WNDSTYLE_FRAME, WS_EX_WINDOWEDGE); 
-	 pPreviewForm->CenterWindow();
-     pPreviewForm->ShowWindow(true); 
+    // Do not change Current Directory as it affects the whole process
+    // SetCurrentDirectory(pPreviewForm->GetSkinFolder().GetData());
 
-     CPaintManagerUI::MessageLoop(); 
- 
-	::CoUninitialize();
-     return 0; 
-} 
+    // Create as Child Window
+    // WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN
+    DWORD dwStyle = WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
+    
+    // Create the window
+    if (!pPreviewForm->Create(hParent, _T("DuilibPreviewWrapper"), dwStyle, 0))
+    {
+        delete pPreviewForm;
+        return NULL;
+    }
+    
+    // No need to Center or Run Loop
+    return pPreviewForm->GetHWND();
+}
+
+BOOL APIENTRY DllMain( HMODULE hModule,
+                       DWORD  ul_reason_for_call,
+                       LPVOID lpReserved
+                     )
+{
+    switch (ul_reason_for_call)
+    {
+    case DLL_PROCESS_ATTACH:
+        CPaintManagerUI::SetInstance(hModule);
+        break;
+    case DLL_THREAD_ATTACH:
+    case DLL_THREAD_DETACH:
+    case DLL_PROCESS_DETACH:
+        break;
+    }
+    return TRUE;
+}

@@ -24,7 +24,7 @@ void CPreviewWnd::Notify(TNotifyUI& msg)
 
 LRESULT CPreviewWnd::OnDestroy( UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled )
 {
-	PostQuitMessage(0);
+	// PostQuitMessage(0); // Do not quit application in DLL mode
 	bHandled=TRUE;
 	return 0;
 }
@@ -54,7 +54,7 @@ LRESULT CPreviewWnd::OnNcHitTest( UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&
 	RECT rcClient;
 	::GetClientRect(*this, &rcClient);
 
-	//¥¶¿Ì¥∞ø⁄Resize
+	//Â§ÑÁêÜÁ™óÂè£Resize
 	if( !::IsZoomed(*this) ) {
 		RECT rcSizeBox = m_PaintManager.GetSizeBox();
 		if( pt.y < rcClient.top + rcSizeBox.top ) {
@@ -71,7 +71,7 @@ LRESULT CPreviewWnd::OnNcHitTest( UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&
 		if( pt.x > rcClient.right - rcSizeBox.right ) return HTRIGHT;
 	}
 
-	//¥¶¿Ì±ÍÃ‚¿∏“∆∂Ø
+	//Â§ÑÁêÜÊ†áÈ¢òÊ†èÁßªÂä®
 	RECT rcCaption = m_PaintManager.GetCaptionRect();
 	if( pt.x >= rcClient.left + rcCaption.left && pt.x < rcClient.right - rcCaption.right \
 		&& pt.y >= rcCaption.top && pt.y < rcCaption.bottom ) {

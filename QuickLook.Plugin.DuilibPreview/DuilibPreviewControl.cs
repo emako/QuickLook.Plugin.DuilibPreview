@@ -1,17 +1,15 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-using QuickLook.Common.NativeMethods;
 
 namespace QuickLook.Plugin.DuilibPreview;
 
 public class DuilibPreviewControl : HwndHost
 {
     private readonly string _path;
-    private Process _process;
     private IntPtr _childHandle = IntPtr.Zero;
+    private IntPtr _dllHandle = IntPtr.Zero;
 
     public DuilibPreviewControl(string path)
     {
@@ -20,88 +18,100 @@ public class DuilibPreviewControl : HwndHost
 
     protected override HandleRef BuildWindowCore(HandleRef hwndParent)
     {
-        // Path to DuilibPreview.exe
+        _childHandle = IntPtr.Zero;
         string assemblyDir = Path.GetDirectoryName(typeof(Plugin).Assembly.Location);
-        string exePath = Path.Combine(assemblyDir, "DuilibPreview.exe");
+        string dllPath = Path.Combine(assemblyDir, "DuilibPreview.dll");
 
-        if (!File.Exists(exePath))
+        try
         {
-            // Try to find it in the usual build output location if debugging
-            // But for release, it should be next to the plugin.
-            // If not found, create a dummy label or similar? HwndHost can't easily return nothing.
-            // We'll just let it fail or return zero handle which might crash.
-            // Better: check exist externally.
-        }
-
-        ProcessStartInfo psi = new ProcessStartInfo(exePath)
-        {
-            Arguments = $"\"{_path}\"",
-            WindowStyle = ProcessWindowStyle.Minimized, // Start minimized to avoid flicker
-            UseShellExecute = false
-        };
-
-        _process = Process.Start(psi);
-
-        // Wait for main window handle
-        // Simple polling
-        int retries = 20;
-        while (retries > 0)
-        {
-            try
+            if (File.Exists(dllPath))
             {
-                _process.Refresh();
-                if (_process.MainWindowHandle != IntPtr.Zero)
+                // Ensure dependencies like DuiLib_u.dll are found
+                SetDllDirectory(assemblyDir);
+                try
                 {
-                    _childHandle = _process.MainWindowHandle;
-                    break;
+                    _dllHandle = LoadLibrary(dllPath);
+                }
+                finally
+                {
+                    SetDllDirectory(null);
                 }
             }
-            catch { } // Process might exit immediately if error
 
-            if (_process.HasExited) return new HandleRef(this, IntPtr.Zero);
-
-            System.Threading.Thread.Sleep(100);
-            retries--;
+            if (_dllHandle != IntPtr.Zero)
+            {
+                try
+                {
+                    _childHandle = CreateDuilibPreview(hwndParent.Handle, _path);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine(ex.ToString());
         }
 
-        if (_childHandle != IntPtr.Zero)
+        if (_childHandle == IntPtr.Zero)
         {
-            // Remove Border and Caption
-            int style = User32.GetWindowLong(_childHandle, -16); // GWL_STYLE
-            style &= ~0x00C00000; // WS_CAPTION
-            style &= ~0x00040000; // WS_THICKFRAME
-            style |= 0x40000000; // WS_CHILD
-            User32.SetWindowLong(_childHandle, -16, style);
-
-            // Parent it
-            SetParent(_childHandle, hwndParent.Handle);
-
-            // Show window (it was minimized)
-            // SW_SHOW = 5, SW_RESTORE = 9
-            // Use User32.ShowWindow if available or PInvoke
-            ShowWindow(_childHandle, 9); // Restore
+            // Create a basic error window instead of crashing
+            // WS_CHILD | WS_VISIBLE
+            _childHandle = CreateWindowEx(
+                0, "STATIC", "DuilibPreview load failed.\nCheck if DuilibPreview.dll and DuiLib_u.dll exist.",
+                0x50000000,
+                0, 0, 800, 600,
+                hwndParent.Handle,
+                IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
         }
 
         return new HandleRef(this, _childHandle);
     }
 
+    [DllImport("user32.dll", EntryPoint = "CreateWindowEx", CharSet = CharSet.Unicode)]
+    private static extern IntPtr CreateWindowEx(
+        int dwExStyle,
+        string lpClassName,
+        string lpWindowName,
+        int dwStyle,
+        int x,
+        int y,
+        int nWidth,
+        int nHeight,
+        IntPtr hWndParent,
+        IntPtr hMenu,
+        IntPtr hInstance,
+        IntPtr lpParam);
+
     protected override void DestroyWindowCore(HandleRef hwnd)
     {
-        if (_process != null && !_process.HasExited)
+        if (_childHandle != IntPtr.Zero)
         {
-            // Using Kill as CloseMainWindow might require message loop processing which might be stuck
-            try
-            {
-                _process.Kill();
-            }
-            catch { }
-            _process.Dispose();
+            DestroyWindow(_childHandle);
+            _childHandle = IntPtr.Zero;
+        }
+
+        if (_dllHandle != IntPtr.Zero)
+        {
+            FreeLibrary(_dllHandle);
+            _dllHandle = IntPtr.Zero;
         }
     }
 
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+    [DllImport("DuilibPreview.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private static extern IntPtr CreateDuilibPreview(IntPtr hParent, string xmlPath);
 
-    [DllImport("user32.dll")]
-    private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+    [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern IntPtr LoadLibrary(string libname);
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern bool FreeLibrary(IntPtr hModule);
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern bool SetDllDirectory(string lpPathName);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern bool DestroyWindow(IntPtr hWnd);
 }
