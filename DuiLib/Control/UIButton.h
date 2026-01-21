@@ -1,4 +1,4 @@
-#ifndef __UIBUTTON_H__
+ï»¿#ifndef __UIBUTTON_H__
 #define __UIBUTTON_H__
 
 #pragma once
@@ -37,7 +37,7 @@ namespace DuiLib
 		
 		UINT GetButtonState() {return m_uButtonState;};
 
-		// ¶ÔÓ¦°´Å¥µÄ5¸ö×´Ì¬Í¼
+		// å¯¹åº”æŒ‰é’®çš„5ä¸ªçŠ¶æ€å›¾
 		void SetFiveStatusImage(const CDuiString& strImage);
 		void SetFadeAlphaDelta(BYTE uDelta);
 		BYTE GetFadeAlphaDelta();
@@ -70,7 +70,7 @@ namespace DuiLib
 		};
 
 		UINT m_uButtonState;
-		CDuiString m_sCursor;			//¹â±êĞÎ×´ arrow/hand ÆäËû¸ù¾İĞèÒªÌí¼Ó
+		CDuiString m_sCursor;			//å…‰æ ‡å½¢çŠ¶ arrow/hand å…¶ä»–æ ¹æ®éœ€è¦æ·»åŠ 
 
 		DWORD m_dwHotBkColor;
 		DWORD m_dwHotTextColor;

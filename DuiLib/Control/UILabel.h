@@ -1,4 +1,4 @@
-#ifndef __UILABEL_H__
+ï»¿#ifndef __UILABEL_H__
 #define __UILABEL_H__
 
 #pragma once
@@ -94,7 +94,7 @@ namespace DuiLib
 		DWORD					m_dwTextShadowColorB;
 		DWORD					m_dwStrokeColor;
 		RectF					m_ShadowOffset;
-		TextRenderingHint		m_TextRenderingAlias;	//ÎÄ×Ö¿¹¾â³Ý¼¶±ð
+		TextRenderingHint		m_TextRenderingAlias;	//æ–‡å­—æŠ—é”¯é½¿çº§åˆ«
 	};
 }
 

@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 #include "UILabel.h"
 
 namespace DuiLib
@@ -243,10 +243,10 @@ namespace DuiLib
             }
         }
         //return m_cxyFixedLast;
-		//GDI+»æÖÆËùĞèµÄ¿í¶ÈÓëGDIÉÔÎ¢²»Ò»Ñù,ÕâÀï×ö¸öĞŞÕı
+		//GDI+ç»˜åˆ¶æ‰€éœ€çš„å®½åº¦ä¸GDIç¨å¾®ä¸ä¸€æ ·,è¿™é‡Œåšä¸ªä¿®æ­£
 		if (m_EnableEffect)
 		{
-			m_cxyFixedLast.cx = m_cxyFixedLast.cx*1.03;	//1.03ÊÇ¾­¹ı²âÊÔ¹Û²ìµÄ½á¹û //Ä¿Ç°ÏÈĞŞÕı¿í¶È,¸ß¶È´ıÓĞ¿ÕÏê²âºóÔÙĞŞÕı
+			m_cxyFixedLast.cx = m_cxyFixedLast.cx*1.03;	//1.03æ˜¯ç»è¿‡æµ‹è¯•è§‚å¯Ÿçš„ç»“æœ //ç›®å‰å…ˆä¿®æ­£å®½åº¦,é«˜åº¦å¾…æœ‰ç©ºè¯¦æµ‹åå†ä¿®æ­£
 		}
 		return m_cxyFixedLast;
 	}

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "App.h"
 #include "PreviewWnd.h"
 #include "StringTools.h"

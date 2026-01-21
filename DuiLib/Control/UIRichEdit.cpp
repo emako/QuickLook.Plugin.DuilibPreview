@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #ifdef _USEIMM
 #include <imm.h>
 #pragma comment(lib, "imm32.lib")
@@ -167,7 +167,7 @@ private:
     unsigned	m_fTimer				:1;	// A timer is set
     unsigned    m_fCaptured           :1;
 	unsigned    m_fShowCaret          :1;
-	unsigned    m_fNeedFreshCaret     :1; // ÐÞÕý¸Ä±ä´óÐ¡ºóµã»÷ÆäËûÎ»ÖÃÔ­À´¹â±ê²»ÄÜÏû³ýµÄÎÊÌâ
+	unsigned    m_fNeedFreshCaret     :1; // ä¿®æ­£æ”¹å˜å¤§å°åŽç‚¹å‡»å…¶ä»–ä½ç½®åŽŸæ¥å…‰æ ‡ä¸èƒ½æ¶ˆé™¤çš„é—®é¢˜
 
 	INT         m_iCaretWidth;
 	INT         m_iCaretHeight;
@@ -2173,7 +2173,7 @@ void CRichEditUI::OnTxNotify(DWORD iNotify, void *pv)
 		{
 			if(pv)                        // Fill out NMHDR portion of pv   
 			{   
-				//Å×³öÒ»¸önotifyÏûÏ¢¸ü¼Ó·½±ã´¦Àílink
+				//æŠ›å‡ºä¸€ä¸ªnotifyæ¶ˆæ¯æ›´åŠ æ–¹ä¾¿å¤„ç†link
 				ENLINK* pEnLink = (ENLINK *)pv;
 				if (pEnLink->msg == WM_LBUTTONDOWN)
 					GetManager()->SendNotify(this, DUI_MSGTYPE_LINK,0,(LPARAM) pv);
@@ -2212,8 +2212,8 @@ void CRichEditUI::OnTxNotify(DWORD iNotify, void *pv)
 	}
 }
 
-// ¶àÐÐ·Çrich¸ñÊ½µÄricheditÓÐÒ»¸ö¹ö¶¯Ìõbug£¬ÔÚ×îºóÒ»ÐÐÊÇ¿ÕÐÐÊ±£¬LineDownºÍSetScrollPosÎÞ·¨¹ö¶¯µ½×îºó
-// ÒýÈëiPos¾ÍÊÇÎªÁËÐÞÕýÕâ¸öbug
+// å¤šè¡Œéžrichæ ¼å¼çš„richeditæœ‰ä¸€ä¸ªæ»šåŠ¨æ¡bugï¼Œåœ¨æœ€åŽä¸€è¡Œæ˜¯ç©ºè¡Œæ—¶ï¼ŒLineDownå’ŒSetScrollPosæ— æ³•æ»šåŠ¨åˆ°æœ€åŽ
+// å¼•å…¥iPoså°±æ˜¯ä¸ºäº†ä¿®æ­£è¿™ä¸ªbug
 void CRichEditUI::SetScrollPos(SIZE szPos,bool bTriggerEvent/*=true*/)
 {
     int cx = 0;
@@ -2402,7 +2402,7 @@ void CRichEditUI::DoEvent(TEventUI& event)
 
 SIZE CRichEditUI::EstimateSize(SIZE szAvailable)
 {
-    //return CDuiSize(m_rcItem); // ÕâÖÖ·½Ê½ÔÚµÚÒ»´ÎÉèÖÃ´óÐ¡Ö®ºó¾Í´óÐ¡²»±äÁË
+    //return CDuiSize(m_rcItem); // è¿™ç§æ–¹å¼åœ¨ç¬¬ä¸€æ¬¡è®¾ç½®å¤§å°ä¹‹åŽå°±å¤§å°ä¸å˜äº†
     return CContainerUI::EstimateSize(szAvailable);
 }
 
@@ -2921,8 +2921,8 @@ LRESULT CRichEditUI::MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, boo
 				POINT pt;
 				GetCursorPos(&pt);
 				HMENU hmenu = CreatePopupMenu();
-				AppendMenu(hmenu,MF_STRING,1000,_T("¸´ÖÆ(&C)"));
-				AppendMenu(hmenu,MF_STRING,1001,_T("Õ³Ìù(&P)"));
+				AppendMenu(hmenu,MF_STRING,1000,_T("å¤åˆ¶(&C)"));
+				AppendMenu(hmenu,MF_STRING,1001,_T("ç²˜è´´(&P)"));
 				::SetForegroundWindow(GetManager()->GetPaintWindow());
 				int nNum = TrackPopupMenu(hmenu,TPM_RETURNCMD,pt.x,pt.y,NULL,GetManager()->GetPaintWindow(),NULL);
 				if (nNum == 1000)

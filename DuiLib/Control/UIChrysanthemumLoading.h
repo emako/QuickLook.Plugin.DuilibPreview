@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 namespace DuiLib
 {
@@ -53,23 +53,23 @@ namespace DuiLib
 		void PaintBitMap();
 	
 	protected:
-		int		m_nTimeInterval;			//Ê±¼ä¼ä¸ô µ¥Î»ms
-		int		m_nNumberOfSpoke;			//·øÌõÊıÁ¿	
-		int		m_nSpokeThickness;			//·øÌõ´ÖÏ¸
+		int		m_nTimeInterval;			//æ—¶é—´é—´éš” å•ä½ms
+		int		m_nNumberOfSpoke;			//è¾æ¡æ•°é‡	
+		int		m_nSpokeThickness;			//è¾æ¡ç²—ç»†
 		int		m_nProgressValue;			//
-		int		m_nOuterCircleRadius;		//ÍâÈ¦°ë¾¶ µ¥Î»£ºÏñËØ
-		int		m_nInnerCircleRadius;		//ÄÚÈ¦°ë¾¶
-		PointF	m_CenterPoint;				//ÖĞĞÄÔ²µã
-		DWORD	m_dwSpokeColor;				//·øÌõÑÕÉ«
+		int		m_nOuterCircleRadius;		//å¤–åœˆåŠå¾„ å•ä½ï¼šåƒç´ 
+		int		m_nInnerCircleRadius;		//å†…åœˆåŠå¾„
+		PointF	m_CenterPoint;				//ä¸­å¿ƒåœ†ç‚¹
+		DWORD	m_dwSpokeColor;				//è¾æ¡é¢œè‰²
 
-		Color*	m_pColors;					//·øÌõµÄÑÕÉ«
-		double* m_pAngles;					//·øÌõµÄ½Ç¶È
+		Color*	m_pColors;					//è¾æ¡çš„é¢œè‰²
+		double* m_pAngles;					//è¾æ¡çš„è§’åº¦
 
 		UINT	m_uTextStyle;
 		DWORD	m_dwTextColor;
 		int		m_iFont;
 		RECT	m_rcTextPadding;
-		TextRenderingHint		m_TextRenderingAlias;	//ÎÄ×Ö¿¹¾â³İ¼¶±ğ
+		TextRenderingHint		m_TextRenderingAlias;	//æ–‡å­—æŠ—é”¯é½¿çº§åˆ«
 
 		Bitmap* m_pgdipBmp;
 	};

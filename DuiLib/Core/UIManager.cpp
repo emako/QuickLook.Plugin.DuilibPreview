@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 #include <zmouse.h>
 #include <stdlib.h>
 #include <CommCtrl.h>
@@ -1354,7 +1354,7 @@ bool CPaintManagerUI::MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, LR
                 ::SendMessage(m_hwndTooltip, TTM_TRACKACTIVATE, TRUE, (LPARAM)&m_ToolTip);
 
             }
-            // by jiangdong 2016-8-6 ĞŞ¸Ätooltip ĞüÍ£Ê±ºò ÉÁË¸bug
+            // by jiangdong 2016-8-6 ä¿®æ”¹tooltip æ‚¬åœæ—¶å€™ é—ªçƒbug
             if (m_pLastToolTip == NULL) {
                 m_pLastToolTip = pHover;
             }
@@ -1374,7 +1374,7 @@ bool CPaintManagerUI::MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, LR
                     ::SendMessage(m_hwndTooltip, TTM_TRACKACTIVATE, TRUE, (LPARAM)&m_ToolTip);
                 }
             }
-            //ĞŞ¸ÄÔÚCListElementUI ÓĞÌáÊ¾ ×ÓÏîÎŞÌáÊ¾ÏÂÎŞ·¨¸úËæÒÆ¶¯£¡£¨°´ÀíËµ²»Ó¦¸ÃÒÆ¶¯µÄ£©
+            //ä¿®æ”¹åœ¨CListElementUI æœ‰æç¤º å­é¡¹æ— æç¤ºä¸‹æ— æ³•è·Ÿéšç§»åŠ¨ï¼ï¼ˆæŒ‰ç†è¯´ä¸åº”è¯¥ç§»åŠ¨çš„ï¼‰
             ::SendMessage(m_hwndTooltip, TTM_TRACKPOSITION, 0, (LPARAM)(DWORD)MAKELONG(pt.x, pt.y));
     }
         return true;
@@ -1522,12 +1522,12 @@ bool CPaintManagerUI::MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, LR
             event.wKeyState = (WORD)wParam;
             event.dwTimestamp = ::GetTickCount();
 			// By daviyang35 at 2015-6-5 16:10:13
-			// ÔÚClickÊÂ¼şÖĞµ¯³öÁËÄ£Ì¬¶Ô»°¿ò£¬ÍË³ö½×¶Î´°¿ÚÊµÀı¿ÉÄÜÒÑ¾­É¾³ı
-			// this³ÉÔ±ÊôĞÔ¸³Öµ½«»áµ¼ÖÂheap´íÎó
-			// this³ÉÔ±º¯Êıµ÷ÓÃ½«»áµ¼ÖÂÒ°Ö¸ÕëÒì³£
-			// Ê¹ÓÃÕ»ÉÏµÄ³ÉÔ±À´µ÷ÓÃÏìÓ¦£¬ÌáÇ°Çå¿Õ³ÉÔ±
-			// µ±×èÈûµÄÄ£Ì¬´°¿Ú·µ»ØÊ±£¬»ØÕ»½×¶Î²»·ÃÎÊÈÎºÎÀàÊµÀı·½·¨»òÊôĞÔ
-			// ½«²»»á´¥·¢Òì³£
+			// åœ¨Clickäº‹ä»¶ä¸­å¼¹å‡ºäº†æ¨¡æ€å¯¹è¯æ¡†ï¼Œé€€å‡ºé˜¶æ®µçª—å£å®ä¾‹å¯èƒ½å·²ç»åˆ é™¤
+			// thisæˆå‘˜å±æ€§èµ‹å€¼å°†ä¼šå¯¼è‡´heapé”™è¯¯
+			// thisæˆå‘˜å‡½æ•°è°ƒç”¨å°†ä¼šå¯¼è‡´é‡æŒ‡é’ˆå¼‚å¸¸
+			// ä½¿ç”¨æ ˆä¸Šçš„æˆå‘˜æ¥è°ƒç”¨å“åº”ï¼Œæå‰æ¸…ç©ºæˆå‘˜
+			// å½“é˜»å¡çš„æ¨¡æ€çª—å£è¿”å›æ—¶ï¼Œå›æ ˆé˜¶æ®µä¸è®¿é—®ä»»ä½•ç±»å®ä¾‹æ–¹æ³•æˆ–å±æ€§
+			// å°†ä¸ä¼šè§¦å‘å¼‚å¸¸
 			CControlUI* pClick = m_pEventClick;
 			m_pEventClick = NULL;
             pClick->Event(event);
@@ -2920,7 +2920,7 @@ const TImageInfo* CPaintManagerUI::AddImage(LPCTSTR bitmap, LPCTSTR type, DWORD 
 
 const TImageInfo* CPaintManagerUI::AddImage(LPCTSTR bitmap, HBITMAP hBitmap, int iWidth, int iHeight, bool bAlpha, bool bShared)
 {
-	// ÒòÎŞ·¨È·¶¨Íâ²¿HBITMAP¸ñÊ½£¬²»ÄÜÊ¹ÓÃhslµ÷Õû
+	// å› æ— æ³•ç¡®å®šå¤–éƒ¨HBITMAPæ ¼å¼ï¼Œä¸èƒ½ä½¿ç”¨hslè°ƒæ•´
 	if( bitmap == NULL || bitmap[0] == _T('\0') ) return NULL;
     if( hBitmap == NULL || iWidth <= 0 || iHeight <= 0 ) return NULL;
 
@@ -3702,7 +3702,7 @@ bool CPaintManagerUI::TranslateMessage(const LPMSG pMsg)
 	if (uChildRes != 0)
 	{
 		HWND hWndParent = ::GetParent(pMsg->hwnd);
-		//code by redrain 2014.12.3,½â¾öeditºÍwebbrowser°´tabÎŞ·¨ÇĞ»»½¹µãµÄbug
+		//code by redrain 2014.12.3,è§£å†³editå’ŒwebbrowseræŒ‰tabæ— æ³•åˆ‡æ¢ç„¦ç‚¹çš„bug
 		//		for( int i = 0; i < m_aPreMessages.GetSize(); i++ ) 
 		for( int i = m_aPreMessages.GetSize() - 1; i >= 0 ; --i ) 
 		{
@@ -3787,27 +3787,27 @@ void CPaintManagerUI::PaintShadow()
 		Color ShadowColor(m_dwShadowColor);
 
 		GraphicsPath ShadowPath;
-		ShadowPath.AddArc(0,0,nDiameter,nDiameter,180,90); // ×óÉÏ½ÇÔ²»¡
-		ShadowPath.AddLine(nShadowSize,0,sizeWnd.cx-nShadowSize,0); // ÉÏ±ß
+		ShadowPath.AddArc(0,0,nDiameter,nDiameter,180,90); // å·¦ä¸Šè§’åœ†å¼§
+		ShadowPath.AddLine(nShadowSize,0,sizeWnd.cx-nShadowSize,0); // ä¸Šè¾¹
 
-		ShadowPath.AddArc(sizeWnd.cx-nDiameter,0, nDiameter,nDiameter,270,90); // ÓÒÉÏ½ÇÔ²»¡
-		ShadowPath.AddLine(sizeWnd.cx,nShadowSize,sizeWnd.cx,sizeWnd.cy-nShadowSize);// ÓÒ±ß
+		ShadowPath.AddArc(sizeWnd.cx-nDiameter,0, nDiameter,nDiameter,270,90); // å³ä¸Šè§’åœ†å¼§
+		ShadowPath.AddLine(sizeWnd.cx,nShadowSize,sizeWnd.cx,sizeWnd.cy-nShadowSize);// å³è¾¹
 
-		ShadowPath.AddArc(sizeWnd.cx-nDiameter,sizeWnd.cy-nDiameter, nDiameter,nDiameter,0,90); // ÓÒÏÂ½ÇÔ²»¡
-		ShadowPath.AddLine(sizeWnd.cx-nShadowSize,sizeWnd.cy, nShadowSize,sizeWnd.cy); // ÏÂ±ß
+		ShadowPath.AddArc(sizeWnd.cx-nDiameter,sizeWnd.cy-nDiameter, nDiameter,nDiameter,0,90); // å³ä¸‹è§’åœ†å¼§
+		ShadowPath.AddLine(sizeWnd.cx-nShadowSize,sizeWnd.cy, nShadowSize,sizeWnd.cy); // ä¸‹è¾¹
 
-		ShadowPath.AddArc(0,sizeWnd.cy-nDiameter, nDiameter,nDiameter,90,90);  // ×óÏÂ½ÇÔ²»¡
-		ShadowPath.AddLine(0,nShadowSize, 0, sizeWnd.cy-nShadowSize);	//×ó±ß
+		ShadowPath.AddArc(0,sizeWnd.cy-nDiameter, nDiameter,nDiameter,90,90);  // å·¦ä¸‹è§’åœ†å¼§
+		ShadowPath.AddLine(0,nShadowSize, 0, sizeWnd.cy-nShadowSize);	//å·¦è¾¹
 
-		// »ñµÃÒõÓ°ÇøÓò
-		Region contentRegion(RectF(nShadowSize,nShadowSize,sizeWnd.cx-nDiameter,sizeWnd.cy-nDiameter));  //ÀûÓÃÄÚÈİµÄÂ·¾¶½¨Á¢ÇøÓò
-		Region ShadowRegion(&ShadowPath);  //ÀûÓÃÒõÓ°Â·¾¶½¨Á¢ÒõÓ°µÄÇøÓò
+		// è·å¾—é˜´å½±åŒºåŸŸ
+		Region contentRegion(RectF(nShadowSize,nShadowSize,sizeWnd.cx-nDiameter,sizeWnd.cy-nDiameter));  //åˆ©ç”¨å†…å®¹çš„è·¯å¾„å»ºç«‹åŒºåŸŸ
+		Region ShadowRegion(&ShadowPath);  //åˆ©ç”¨é˜´å½±è·¯å¾„å»ºç«‹é˜´å½±çš„åŒºåŸŸ
 
-		ShadowRegion.Exclude(&contentRegion); // ÇøÓòÇó²î£¬ÕâÑù¾ÍµÃ³öÁË´¿´âµÄÒõÓ°ÇøÓò£¬ÅÅ³ıÁËÒõÓ°ÇøÓòºÍ°´Å¥ÇøÓòÖØºÏµÄ²¿·Ö¡£
+		ShadowRegion.Exclude(&contentRegion); // åŒºåŸŸæ±‚å·®ï¼Œè¿™æ ·å°±å¾—å‡ºäº†çº¯ç²¹çš„é˜´å½±åŒºåŸŸï¼Œæ’é™¤äº†é˜´å½±åŒºåŸŸå’ŒæŒ‰é’®åŒºåŸŸé‡åˆçš„éƒ¨åˆ†ã€‚
 
-		// ³õÊ¼»¯½¥±ä»­Ë¢
+		// åˆå§‹åŒ–æ¸å˜ç”»åˆ·
 		PathGradientBrush brush(&ShadowPath);
-		brush.SetCenterColor(ShadowColor); // ÕâÀïÀûÓÃµÄÊÇÂ·¾¶½¥±ä»­Ë¢
+		brush.SetCenterColor(ShadowColor); // è¿™é‡Œåˆ©ç”¨çš„æ˜¯è·¯å¾„æ¸å˜ç”»åˆ·
 		Color colors(0, 0, 0, 0);
 		int nCount = 1;
 		brush.SetSurroundColors(&colors,&nCount);
@@ -3821,7 +3821,7 @@ void CPaintManagerUI::PaintShadow()
 			else if (fScales>1)
 				fScales=1;
 		}
-		brush.SetFocusScales(fScales, fScales);  //¶Ô½¥±äĞ§¹û½øĞĞµ÷Õû£¬Ê¹Æä¸ü¼Ó×ÔÈ»¡£Õâ¾äµÄÊµ¼Ê×÷ÓÃÊÇ¶Ô½¥±äĞ§¹û½øĞĞËõ·Å¡£²ÎÊıÊÇºá×İÁ½¸ö×ø±êÖáµÄËõ·Å±ÈÀı¡£
+		brush.SetFocusScales(fScales, fScales);  //å¯¹æ¸å˜æ•ˆæœè¿›è¡Œè°ƒæ•´ï¼Œä½¿å…¶æ›´åŠ è‡ªç„¶ã€‚è¿™å¥çš„å®é™…ä½œç”¨æ˜¯å¯¹æ¸å˜æ•ˆæœè¿›è¡Œç¼©æ”¾ã€‚å‚æ•°æ˜¯æ¨ªçºµä¸¤ä¸ªåæ ‡è½´çš„ç¼©æ”¾æ¯”ä¾‹ã€‚
 
 		nGraphics.FillRegion(&brush, &ShadowRegion);
 

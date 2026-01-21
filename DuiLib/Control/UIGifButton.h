@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 namespace DuiLib
 {
@@ -26,10 +26,10 @@ namespace DuiLib
 		void SetHotTextColor(DWORD dwColor);
 		DWORD GetHotTextColor() const;
 
-		void DrawFrame( HDC hDC );		// »æÖÆGIFÃ¿Ö¡
+		void DrawFrame( HDC hDC );		// ç»˜åˆ¶GIFæ¯å¸§
 	protected:
 		UINT m_uButtonState;
-		CDuiString m_sCursor;			//¹â±êĞÎ×´ arrow/hand ÆäËû¸ù¾İĞèÒªÌí¼Ó
+		CDuiString m_sCursor;			//å…‰æ ‡å½¢çŠ¶ arrow/hand å…¶ä»–æ ¹æ®éœ€è¦æ·»åŠ 
 		DWORD	m_dwHotTextColor;
 		RECT m_rcBkImageDest;
 	};

@@ -1,4 +1,4 @@
-#ifndef __UIRENDER_H__
+ï»¿#ifndef __UIRENDER_H__
 #define __UIRENDER_H__
 
 #pragma once
@@ -41,7 +41,7 @@ public:
     static void DrawColor(HDC hDC, const RECT& rc, DWORD color);
     static void DrawGradient(HDC hDC, const RECT& rc, DWORD dwFirst, DWORD dwSecond, bool bVertical, int nSteps);
 
-    // ÒÔÏÂº¯ÊıÖĞµÄÑÕÉ«²ÎÊıalphaÖµÎŞĞ§
+    // ä»¥ä¸‹å‡½æ•°ä¸­çš„é¢œè‰²å‚æ•°alphaå€¼æ— æ•ˆ
     static void DrawLine(HDC hDC, const RECT& rc, int nSize, DWORD dwPenColor, int nStyle = PS_SOLID);
     static void DrawRect(HDC hDC, const RECT& rc, int nSize, DWORD dwPenColor, int nStyle = PS_SOLID);
     static void DrawRoundRect(HDC hDC, const RECT& rc, int width, int height, int nSize, DWORD dwPenColor, int nStyle = PS_SOLID);
@@ -52,7 +52,7 @@ public:
 	static HBITMAP GenerateBitmap(CPaintManagerUI* pManager, RECT rc, CControlUI* pStopControl = NULL, DWORD dwFilterColor = 0);
     static HBITMAP GenerateBitmap(CPaintManagerUI* pManager, CControlUI* pControl, RECT rc, DWORD dwFilterColor = 0);
 	static SIZE GetTextSize(HDC hDC, CPaintManagerUI* pManager , LPCTSTR pstrText, int iFont, UINT uStyle);
-	//nSpecifyWidth/nSpecifyHeightÖ¸¶¨¿í¸ß¶¼´óÓÚ0Ê±,Ö±½Ó·µ»ØÖ¸¶¨µÄ¿í¸ß
+	//nSpecifyWidth/nSpecifyHeightæŒ‡å®šå®½é«˜éƒ½å¤§äº0æ—¶,ç›´æ¥è¿”å›æŒ‡å®šçš„å®½é«˜
 	static SIZE EstimateTextSize(HDC hDC, CPaintManagerUI* pManager, LPCTSTR pstrText,int iFont, UINT uStyle,bool bShowhtml=false,bool bEnabledEffect=false,int nSpecifyWidth=0,int nSpecifyHeight=0,const RECT* prcTextpadding=NULL);
 };
 

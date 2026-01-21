@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 #include "UIGifButton.h"
 
 namespace DuiLib
@@ -255,7 +255,7 @@ namespace DuiLib
 
 		if (m_sText.IsEmpty() == false)
 		{
-			//»æÖÆÎÄ±¾
+			//ç»˜åˆ¶æ–‡æœ¬
 	#ifdef _UNICODE
 			LPWSTR pWideText = (LPWSTR)m_sText.GetData();
 	#else 

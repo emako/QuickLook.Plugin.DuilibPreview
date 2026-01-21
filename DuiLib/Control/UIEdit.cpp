@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "UIEdit.h"
 
 namespace DuiLib
@@ -191,7 +191,7 @@ namespace DuiLib
 		else if( uMsg == WM_PRINT ) {
 			if (m_pOwner->GetManager()->IsLayered()) {
 				lRes = CWindowWnd::HandleMessage(uMsg, wParam, lParam);
-				if( m_pOwner->IsEnabled() && m_bDrawCaret ) { // todo:ÅĞ¶ÏÊÇ·ñenabled
+				if( m_pOwner->IsEnabled() && m_bDrawCaret ) { // todo:åˆ¤æ–­æ˜¯å¦enabled
 					RECT rcClient;
 					::GetClientRect(m_hWnd, &rcClient);
 					POINT ptCaret;

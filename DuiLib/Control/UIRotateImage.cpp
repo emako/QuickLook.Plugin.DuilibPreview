@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 #include "UIRotateImage.h"
 
 namespace DuiLib
@@ -116,7 +116,7 @@ namespace DuiLib
 
 		while (!pData)
 		{
-			//¶Á²»µ½Í¼Æ¬, ÔòÖ±½ÓÈ¥¶ÁÈ¡bitmap.m_lpstrÖ¸ÏòµÄÂ·¾¶
+			//è¯»ä¸åˆ°å›¾ç‰‡, åˆ™ç›´æŽ¥åŽ»è¯»å–bitmap.m_lpstræŒ‡å‘çš„è·¯å¾„
 			HANDLE hFile = ::CreateFile(pstrImgPath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, \
 				FILE_ATTRIBUTE_NORMAL, NULL);
 			if( hFile == INVALID_HANDLE_VALUE ) break;
@@ -311,7 +311,7 @@ namespace DuiLib
 			graphics.SetSmoothingMode(SmoothingMode::SmoothingModeHighQuality);
 			graphics.TranslateTransform(m_centerPos.X,m_centerPos.Y);
 			graphics.RotateTransform(m_nCurAngle);
-			graphics.TranslateTransform(-m_centerPos.X, -m_centerPos.Y);//»¹Ô­Ô´µã
+			graphics.TranslateTransform(-m_centerPos.X, -m_centerPos.Y);//è¿˜åŽŸæºç‚¹
 
 			graphics.DrawImage(m_pBkimage,m_rcItem.left,m_rcItem.top,m_rcItem.right - m_rcItem.left,m_rcItem.bottom - m_rcItem.top);
 		}
@@ -321,7 +321,7 @@ namespace DuiLib
 			graphics.SetSmoothingMode(SmoothingMode::SmoothingModeHighQuality);
 			graphics.TranslateTransform(m_centerPos.X,m_centerPos.Y);
 			graphics.RotateTransform(m_nCurAngle);
-			graphics.TranslateTransform(-m_centerPos.X, -m_centerPos.Y);//»¹Ô­Ô´µã		
+			graphics.TranslateTransform(-m_centerPos.X, -m_centerPos.Y);//è¿˜åŽŸæºç‚¹		
 
 			int imgWidth = m_pBkimage->GetWidth();
 			int imgHeight = m_pBkimage->GetHeight();

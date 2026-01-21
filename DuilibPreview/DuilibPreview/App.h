@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 
 #include "resource.h"
 
 
 int ShowHelpInfo()
 {
-	MessageBox(NULL, _T("Ê¹ÓÃÊ±½«½çÃæÎÄ¼ş(*.xml)ÍÏµ½DuilibPreview.exeÉÏ¼´¿ÉÔ¤ÀÀ£¬\r\n°´\"Esc\"»òÕß\"Alt+F4\"ÍË³ö¡£"), _T("½çÃæÔ¤ÀÀ¹¤¾ß"), MB_OK);
+	MessageBox(NULL, _T("ä½¿ç”¨æ—¶å°†ç•Œé¢æ–‡ä»¶(*.xml)æ‹–åˆ°DuilibPreview.exeä¸Šå³å¯é¢„è§ˆï¼Œ\r\næŒ‰\"Esc\"æˆ–è€…\"Alt+F4\"é€€å‡ºã€‚"), _T("ç•Œé¢é¢„è§ˆå·¥å…·"), MB_OK);
 	return 0;
 }

@@ -1,4 +1,4 @@
-#include "StringTools.h"
+Ôªø#include "StringTools.h"
 
 std::string UnicodeToAnsi(const std::wstring& strSource)
 {
@@ -87,7 +87,7 @@ bool UrlEncode(const char* szSrc, char* pBuf, int cbBufLen, bool bUpperCase)
 		return true;
     }
 
-    //œ»◊™ªªµΩUTF-8
+    //ÂÖàËΩ¨Êç¢Âà∞UTF-8
     char baseChar = bUpperCase ? 'A' : 'a';
     int cchWideChar = MultiByteToWideChar(CP_ACP, 0, szSrc, len_ascii, NULL, 0);
     LPWSTR pUnicode = (LPWSTR)malloc((cchWideChar + 1) * sizeof(WCHAR));
@@ -106,7 +106,7 @@ bool UrlEncode(const char* szSrc, char* pBuf, int cbBufLen, bool bUpperCase)
     pUTF8[cbUTF8] = '\0';
 
     unsigned char c;
-    int cbDest = 0; //¿€º”
+    int cbDest = 0; //Á¥ØÂä†
     unsigned char *pSrc = (unsigned char*)pUTF8;
     unsigned char *pDest = (unsigned char*)pBuf;
     while(*pSrc && cbDest < cbBufLen - 1)
@@ -126,7 +126,7 @@ bool UrlEncode(const char* szSrc, char* pBuf, int cbBufLen, bool bUpperCase)
         }
         else
         {
-            //ºÏ≤Èª∫≥Â«¯¥Û–° «∑Òπª”√£ø
+            //Ê£ÄÊü•ÁºìÂÜ≤Âå∫Â§ßÂ∞èÊòØÂê¶Â§üÁî®Ôºü
             if(cbDest + 3 > cbBufLen - 1)
                 break;
             pDest[0] = '%';
@@ -144,7 +144,7 @@ bool UrlEncode(const char* szSrc, char* pBuf, int cbBufLen, bool bUpperCase)
     return true;
 }
 
-//Ω‚¬Î∫Û «utf-8±‡¬Î
+//Ëß£Á†ÅÂêéÊòØutf-8ÁºñÁ†Å
 bool UrlDecode(const char* szSrc, char* pBuf, int cbBufLen)
 {
     if(szSrc == NULL || pBuf == NULL || cbBufLen <= 0)
@@ -161,7 +161,7 @@ bool UrlDecode(const char* szSrc, char* pBuf, int cbBufLen)
     if(pUTF8 == NULL)
         return false;
 
-    int cbDest = 0; //¿€º”
+    int cbDest = 0; //Á¥ØÂä†
     unsigned char *pSrc = (unsigned char*)szSrc;
     unsigned char *pDest = (unsigned char*)pUTF8;
     while(*pSrc)
@@ -169,7 +169,7 @@ bool UrlDecode(const char* szSrc, char* pBuf, int cbBufLen)
         if(*pSrc == '%')
         {
             *pDest = 0;
-            //∏ﬂŒª
+            //È´ò‰Ωç
             if(pSrc[1] >= 'A' && pSrc[1] <= 'F')
                 *pDest += (pSrc[1] - 'A' + 10) * 0x10;
             else if(pSrc[1] >= 'a' && pSrc[1] <= 'f')
@@ -177,7 +177,7 @@ bool UrlDecode(const char* szSrc, char* pBuf, int cbBufLen)
             else
                 *pDest += (pSrc[1] - '0') * 0x10;
 
-            //µÕŒª
+            //‰Ωé‰Ωç
             if(pSrc[2] >= 'A' && pSrc[2] <= 'F')
                 *pDest += (pSrc[2] - 'A' + 10);
             else if(pSrc[2] >= 'a' && pSrc[2] <= 'f')
@@ -314,7 +314,7 @@ std::string EscapeToAnsi(const std::string& strSource)
 {
 	try
 	{
-		string strAnsi = strSource;					//"\u50ab",¡ÌÕ‚“ª÷÷"%u50ab"‘› ±√ª”–◊ˆ¥¶¿Ì
+		string strAnsi = strSource;					//"\u50ab",Âè¶Â§ñ‰∏ÄÁßç"%u50ab"ÊöÇÊó∂Ê≤°ÊúâÂÅöÂ§ÑÁêÜ
 		string strValue,strvalue1;
 		wchar_t wch;
 

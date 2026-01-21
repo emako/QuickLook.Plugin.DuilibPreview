@@ -1,4 +1,4 @@
-#ifndef __UIWEBBROWSER_H__
+ï»¿#ifndef __UIWEBBROWSER_H__
 #define __UIWEBBROWSER_H__
 
 #pragma once
@@ -8,12 +8,12 @@
 
 namespace DuiLib
 {
-	//jsµ÷ÓÃc++Ê±,c++µÄº¯ÊıÀàĞÍÉùÃ÷
+	//jsè°ƒç”¨c++æ—¶,c++çš„å‡½æ•°ç±»å‹å£°æ˜
 	/*
-		pDispParams:js´«µİ¹ıÀ´µÄ²ÎÊıÊı×é,cArgsÊÇ²ÎÊıµÄÊıÁ¿,rgvargÊÇ²ÎÊıÊı×éµÄÖ¸Õë¡£×¢Òâ,jsÀïÃæµÄ²ÎÊıË³ĞòºÍc++Õâ¸ö²ÎÊıÊı×éÀïÃæµÄË³Ğò¸ÕºÃÊÇÏà·´µÄ
-		pVarResult:×÷ÎªJsº¯ÊıµÄ·µ»ØÖµ.Òª×¢ÒâÅĞ¶ÏÖ¸ÕëÊÇ·ñÎª¿Õ.ÁíÍâ,Èç¹ûÒª·µ»Ø¸øjs×Ö·û´®,ÄÇÃ´ÒªÊ¹ÓÃSysAllocString,²¢ÇÒ²»ÓÃSysFreeString
-		pExcepInfo:·µ»Ø¸øjsµÄÒì³£ĞÅÏ¢,Ò»°ã²»ÓÃ
-		puArgErr:´íÎóË÷Òı,Ò»°ã²»ÓÃ
+		pDispParams:jsä¼ é€’è¿‡æ¥çš„å‚æ•°æ•°ç»„,cArgsæ˜¯å‚æ•°çš„æ•°é‡,rgvargæ˜¯å‚æ•°æ•°ç»„çš„æŒ‡é’ˆã€‚æ³¨æ„,jsé‡Œé¢çš„å‚æ•°é¡ºåºå’Œc++è¿™ä¸ªå‚æ•°æ•°ç»„é‡Œé¢çš„é¡ºåºåˆšå¥½æ˜¯ç›¸åçš„
+		pVarResult:ä½œä¸ºJså‡½æ•°çš„è¿”å›å€¼.è¦æ³¨æ„åˆ¤æ–­æŒ‡é’ˆæ˜¯å¦ä¸ºç©º.å¦å¤–,å¦‚æœè¦è¿”å›ç»™jså­—ç¬¦ä¸²,é‚£ä¹ˆè¦ä½¿ç”¨SysAllocString,å¹¶ä¸”ä¸ç”¨SysFreeString
+		pExcepInfo:è¿”å›ç»™jsçš„å¼‚å¸¸ä¿¡æ¯,ä¸€èˆ¬ä¸ç”¨
+		puArgErr:é”™è¯¯ç´¢å¼•,ä¸€èˆ¬ä¸ç”¨
 	*/
 	class CWebBrowserUI;
 
@@ -47,7 +47,7 @@ namespace DuiLib
 		, public ITranslateAccelerator
 	{
 	public:
-		/// ¹¹Ôìº¯Êı
+		/// æ„é€ å‡½æ•°
 		CWebBrowserUI();
 		virtual ~CWebBrowserUI();
 
@@ -69,34 +69,34 @@ namespace DuiLib
 		IWebBrowser2* GetWebBrowser2(void);
 		IDispatch*		   GetHtmlWindow();
 		static DISPID FindId(IDispatch *pObj, LPOLESTR pName);
-		//Õâ¸öº¯ÊıÓÃÓÚc++µ÷ÓÃjs
+		//è¿™ä¸ªå‡½æ•°ç”¨äºc++è°ƒç”¨js
 		/*
-			pObj:Ò»°ãÀ´½²,´«µİGetHtmlWindow()µÄ·µ»ØÖµ¼´¿É,µ÷ÓÃµÄÊÇÈ«¾Öjsº¯Êı,ÏêÏ¸ÁË½âÇë×ÔĞĞËÑË÷
-			pMehtod:wchar_t*µÄÖ¸Õë,jsº¯ÊıÃû.
-			pVarResult:ÓÃÀ´½ÓÊÕjsº¯ÊıÖ´ĞĞ½á¹û.
-			ps:²ÎÊıÊı×éÖ¸Õë.Õâ¸ö²ÎÊıË³ĞòÓëjs½ÓÊÕµ½µÄ²ÎÊıË³ĞòÊÇÏà·´µÄ,ÁíÍâÈç¹ûÒª´«µİ×Ö·û´®,ÇëÊ¹ÓÃSysAllocString,ÔÚµ÷ÓÃjsº¯Êı½áÊøºó,Òª¶ÔÓ¦Ê¹ÓÃSysFreeString¡£
-			cArgs:²ÎÊıÊı×éµÄ´óĞ¡
+			pObj:ä¸€èˆ¬æ¥è®²,ä¼ é€’GetHtmlWindow()çš„è¿”å›å€¼å³å¯,è°ƒç”¨çš„æ˜¯å…¨å±€jså‡½æ•°,è¯¦ç»†äº†è§£è¯·è‡ªè¡Œæœç´¢
+			pMehtod:wchar_t*çš„æŒ‡é’ˆ,jså‡½æ•°å.
+			pVarResult:ç”¨æ¥æ¥æ”¶jså‡½æ•°æ‰§è¡Œç»“æœ.
+			ps:å‚æ•°æ•°ç»„æŒ‡é’ˆ.è¿™ä¸ªå‚æ•°é¡ºåºä¸jsæ¥æ”¶åˆ°çš„å‚æ•°é¡ºåºæ˜¯ç›¸åçš„,å¦å¤–å¦‚æœè¦ä¼ é€’å­—ç¬¦ä¸²,è¯·ä½¿ç”¨SysAllocString,åœ¨è°ƒç”¨jså‡½æ•°ç»“æŸå,è¦å¯¹åº”ä½¿ç”¨SysFreeStringã€‚
+			cArgs:å‚æ•°æ•°ç»„çš„å¤§å°
 		*/
 		static HRESULT InvokeMethod(IDispatch *pObj, LPOLESTR pMehtod, VARIANT *pVarResult, VARIANT *ps, int cArgs);
 		static HRESULT GetProperty(IDispatch *pObj, LPOLESTR pName, VARIANT *pValue);
 		static HRESULT SetProperty(IDispatch *pObj, LPOLESTR pName, VARIANT *pValue);
-		//jsµ÷ÓÃc++, µ÷ÓÃ·½·¨Îªwindow.external.strJSFuncName() //strJSFuncName-jsÖĞµ÷ÓÃµÄº¯ÊıÃû pCallback-º¯ÊıÃû¶ÔÓ¦µÄº¯ÊıÖ¸Õë
+		//jsè°ƒç”¨c++, è°ƒç”¨æ–¹æ³•ä¸ºwindow.external.strJSFuncName() //strJSFuncName-jsä¸­è°ƒç”¨çš„å‡½æ•°å pCallback-å‡½æ•°åå¯¹åº”çš„å‡½æ•°æŒ‡é’ˆ
 		void BindJSWindowExternalFunc(const CDuiString& strJSFuncName,PJSCall pCallback);
 
 		void SetSilent(bool bSilent);
 	protected:
 		bool m_bSilent;
-		CDuiPtrArray m_aJsCallInfo;			//jsµ÷ÓÃc++Ê±,º¯ÊıĞÅÏ¢
-		IWebBrowser2*			m_pWebBrowser2; //ä¯ÀÀÆ÷Ö¸Õë
+		CDuiPtrArray m_aJsCallInfo;			//jsè°ƒç”¨c++æ—¶,å‡½æ•°ä¿¡æ¯
+		IWebBrowser2*			m_pWebBrowser2; //æµè§ˆå™¨æŒ‡é’ˆ
 		IHTMLWindow2*		_pHtmlWnd2;
 		LONG m_dwRef;
 		DWORD m_dwCookie;
 		virtual void ReleaseControl();
 		HRESULT RegisterEventHandler(BOOL inAdvise);
 		
-		CDuiString m_sHomePage;	// Ä¬ÈÏÒ³Ãæ
-		bool m_bAutoNavi;	// ÊÇ·ñÆô¶¯Ê±´ò¿ªÄ¬ÈÏÒ³Ãæ
-		CWebBrowserEventHandler* m_pWebBrowserEventHandler;	//ä¯ÀÀÆ÷ÊÂ¼ş´¦Àí
+		CDuiString m_sHomePage;	// é»˜è®¤é¡µé¢
+		bool m_bAutoNavi;	// æ˜¯å¦å¯åŠ¨æ—¶æ‰“å¼€é»˜è®¤é¡µé¢
+		CWebBrowserEventHandler* m_pWebBrowserEventHandler;	//æµè§ˆå™¨äº‹ä»¶å¤„ç†
 
 		// DWebBrowserEvents2
 		void BeforeNavigate2( IDispatch *pDisp,VARIANT *&url,VARIANT *&Flags,VARIANT *&TargetFrameName,VARIANT *&PostData,VARIANT *&Headers,VARIANT_BOOL *&Cancel );
@@ -134,7 +134,7 @@ namespace DuiLib
 		STDMETHOD(OnDocWindowActivate)(BOOL fActivate);
 		STDMETHOD(OnFrameWindowActivate)(BOOL fActivate);
 		STDMETHOD(ResizeBorder)(LPCRECT prcBorder, IOleInPlaceUIWindow* pUIWindow, BOOL fFrameWindow);
-		STDMETHOD(TranslateAccelerator)(LPMSG lpMsg, const GUID* pguidCmdGroup, DWORD nCmdID);	//ä¯ÀÀÆ÷ÏûÏ¢¹ıÂË
+		STDMETHOD(TranslateAccelerator)(LPMSG lpMsg, const GUID* pguidCmdGroup, DWORD nCmdID);	//æµè§ˆå™¨æ¶ˆæ¯è¿‡æ»¤
 		STDMETHOD(GetOptionKeyPath)(LPOLESTR* pchKey, DWORD dwReserved);
 		STDMETHOD(GetDropTarget)(IDropTarget* pDropTarget, IDropTarget** ppDropTarget);
 		STDMETHOD(GetExternal)(IDispatch** ppDispatch);
@@ -160,7 +160,7 @@ namespace DuiLib
 			/* [in] */ UINT uiCP);
 
 		// ITranslateAccelerator
-		// DuilibÏûÏ¢·Ö·¢¸øWebBrowser
+		// Duilibæ¶ˆæ¯åˆ†å‘ç»™WebBrowser
 		virtual LRESULT TranslateAccelerator( MSG *pMsg );
 	};
 } // namespace DuiLib

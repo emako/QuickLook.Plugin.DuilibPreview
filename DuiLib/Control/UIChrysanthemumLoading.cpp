@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 #include "UIChrysanthemumLoading.h"
 #include <math.h>
 
@@ -114,9 +114,9 @@ namespace DuiLib
 			if (m_pgdipBmp==NULL)
 				InitChrysanthemumLoading();
 
-			// »ñµÃ´°¿ÚµÄGraphics¶ÔÏó
+			// è·å¾—çª—å£çš„Graphicså¯¹è±¡
 			Graphics gh(hDC);
-			// ½«Ãè»­ºÃµÄCacheImage»­µ½´°¿ÚÉÏ
+			// å°†æç”»å¥½çš„CacheImageç”»åˆ°çª—å£ä¸Š
 			gh.DrawImage(m_pgdipBmp, m_rcItem.left, m_rcItem.top);	
 		}
 		return true;
@@ -179,11 +179,11 @@ namespace DuiLib
 
 			intPosition++;
 		}
-		//»æÖÆÎÄ×Ö
+		//ç»˜åˆ¶æ–‡å­—
 		if (m_sText.IsEmpty() == false)
 		{
 			g.SetTextRenderingHint(GetTextRenderingAlias());
-			//»æÖÆÎÄ±¾
+			//ç»˜åˆ¶æ–‡æœ¬
 #ifdef _UNICODE
 			LPWSTR pWideText = (LPWSTR)m_sText.GetData();
 #else 

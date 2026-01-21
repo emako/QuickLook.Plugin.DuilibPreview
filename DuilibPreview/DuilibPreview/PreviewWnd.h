@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "WinImplBase.hpp"
 
 class CPreviewWnd : public WindowImplBase 

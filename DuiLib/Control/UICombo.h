@@ -1,4 +1,4 @@
-#ifndef __UICOMBO_H__
+ï»¿#ifndef __UICOMBO_H__
 #define __UICOMBO_H__
 
 #pragma once
@@ -168,7 +168,7 @@ protected:
 
     TListInfoUI m_ListInfo;
 
-	TextRenderingHint		m_TextRenderingAlias;	//ÎÄ×Ö¿¹¾â³Ý¼¶±ð
+	TextRenderingHint		m_TextRenderingAlias;	//æ–‡å­—æŠ—é”¯é½¿çº§åˆ«
 };
 
 } // namespace DuiLib

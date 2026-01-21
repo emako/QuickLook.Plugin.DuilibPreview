@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <Windows.h>
 #include <string>
@@ -13,8 +13,8 @@ std::wstring Utf8ToUnicode(const std::string& strSrouce);
 std::string UnicodeToUtf8(const std::wstring& strSource);
 std::string AnsiToUtf8(const std::string& strSource);
 std::string Utf8ToAnsi(const std::string& strSource);
-std::string URLEncodeGB2312(const char* szSrc/*, char* pBuf, int cbBufLen*/);			//¿Õ¸ñ×ªÎª'+'
-std::string URLEncodeGB2312Forspace(const char* szSrc/*, char* pBuf, int cbBufLen*/);	//¿Õ¸ñ×ªÎª'%20'
+std::string URLEncodeGB2312(const char* szSrc/*, char* pBuf, int cbBufLen*/);			//ç©ºæ ¼è½¬ä¸º'+'
+std::string URLEncodeGB2312Forspace(const char* szSrc/*, char* pBuf, int cbBufLen*/);	//ç©ºæ ¼è½¬ä¸º'%20'
 char* Utf8ToGBK(const char* strSource);
 char* GBKToUtf8(const char* strSource);
 bool UrlEncode(const char* szSrc, char* pBuf, int cbBufLen, bool bUpperCase);
@@ -86,7 +86,7 @@ inline void CutChineseChar(char *pszSrc,unsigned int nNeedLen)
 {
 	if (strlen(pszSrc) >= nNeedLen)
 	{
-		//Èç¹ûºóÁ½Î»²»ÊÇÓ¢ÎÄ×Ö·û£¬Ò²²»ÊÇÒ»¸öÓĞĞ§µÄºº×Ö£¬ÔòºóÈıÎ»ÊÇÒ»¸öºº×Ö¶à×îºóÒ»¸ö×Ö½Ú
+		//å¦‚æœåä¸¤ä½ä¸æ˜¯è‹±æ–‡å­—ç¬¦ï¼Œä¹Ÿä¸æ˜¯ä¸€ä¸ªæœ‰æ•ˆçš„æ±‰å­—ï¼Œåˆ™åä¸‰ä½æ˜¯ä¸€ä¸ªæ±‰å­—å¤šæœ€åä¸€ä¸ªå­—èŠ‚
 		if(!IsValidEnglishChar((const unsigned char *)(pszSrc+nNeedLen-2)) && !IsGBK((const unsigned char *)(pszSrc+nNeedLen-2)))
 		{
 			*(pszSrc+nNeedLen-3) = '.';

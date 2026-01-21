@@ -1,4 +1,4 @@
-
+ï»¿
 #pragma once
 
 namespace DuiLib
@@ -43,17 +43,17 @@ namespace DuiLib
 		void	InitInfo();
 
 	protected:
-		int m_nTimeInterval;			//Ê±¼ä¼ä¸ô(¶àÉÙºÁÃëĞı×ªÒ»´Î) µ¥Î»ms
-		int m_nAngle;					//Ã¿´ÎĞı×ª½Ç¶È
-		bool m_bStretch;				//ÊÇ·ñ×Ô¶¯À­ÉìÍ¼Æ¬
-		bool m_bIsAutoStart;			//ÊÇ·ñ×Ô¶¯¿ªÊ¼Ğı×ª
-		int m_nFixAngle;				//¹Ì¶¨Ğı×ª½Ç¶È		
+		int m_nTimeInterval;			//æ—¶é—´é—´éš”(å¤šå°‘æ¯«ç§’æ—‹è½¬ä¸€æ¬¡) å•ä½ms
+		int m_nAngle;					//æ¯æ¬¡æ—‹è½¬è§’åº¦
+		bool m_bStretch;				//æ˜¯å¦è‡ªåŠ¨æ‹‰ä¼¸å›¾ç‰‡
+		bool m_bIsAutoStart;			//æ˜¯å¦è‡ªåŠ¨å¼€å§‹æ—‹è½¬
+		int m_nFixAngle;				//å›ºå®šæ—‹è½¬è§’åº¦		
 
 		int m_nCurAngle;
 		Gdiplus::Image*	m_pBkimage;
 		IStream* m_pStream;
 		CDuiString m_sBkImage;
-		bool m_bIsPlaying;				//ÊÇ·ñÕıÔÚĞı×ª
+		bool m_bIsPlaying;				//æ˜¯å¦æ­£åœ¨æ—‹è½¬
 
 		PointF m_centerPos;
 	};

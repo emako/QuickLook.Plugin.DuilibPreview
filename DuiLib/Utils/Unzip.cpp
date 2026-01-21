@@ -1,4 +1,4 @@
-#ifdef ZIP_STD
+﻿#ifdef ZIP_STD
 #include <stdio.h>
 #include <string.h>
 #include <malloc.h>
@@ -4126,7 +4126,7 @@ ZRESULT TUnzip1::Find(const TCHAR *tname,bool ic,int *index,ZIPENTRY *ze)
 	strcpy(name,tname);
 #endif
 
-	//��\תΪ/
+	//将\转为/
 	char szNewName[MAX_PATH] = {0};
 	int nNameLen = strlen(name);
 	for (int i=0;i<nNameLen;i++)
@@ -4136,7 +4136,7 @@ ZRESULT TUnzip1::Find(const TCHAR *tname,bool ic,int *index,ZIPENTRY *ze)
 			ch='/';
 		szNewName[i] = ch;
 	}
-	//��//תΪ/
+	//将//转为/
 	memset(name,0,MAX_PATH);
 	nNameLen= strlen(szNewName);
 	int j=0;

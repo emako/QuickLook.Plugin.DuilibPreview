@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "UIButton.h"
 
 namespace DuiLib
@@ -690,7 +690,7 @@ Label_ForeImage:
 	{
 		if( (m_rcBorderSize.left>0 || m_rcBorderSize.top>0 || m_rcBorderSize.right>0 || m_rcBorderSize.bottom>0) && (m_dwBorderColor != 0 || m_dwFocusBorderColor != 0)) 
 		{
-			if( m_cxyBorderRound.cx > 0 || m_cxyBorderRound.cy > 0 )//��Բ�Ǳ߿�
+			if( m_cxyBorderRound.cx > 0 || m_cxyBorderRound.cy > 0 )//画圆角边框
 			{
 				if (IsFocused() && m_dwFocusBorderColor != 0)
 					CRenderEngine::DrawRoundRect(hDC, m_rcItem, m_rcBorderSize.left, m_cxyBorderRound.cx, m_cxyBorderRound.cy, GetAdjustColor(m_dwFocusBorderColor), m_nBorderStyle);
