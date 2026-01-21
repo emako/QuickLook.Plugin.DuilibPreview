@@ -117,7 +117,7 @@ public class DuilibPreviewControl : HwndHost
         }
         finally
         {
-            SetDllDirectory(null);
+            SetDllDirectory(null!);
         }
     }
 
