@@ -1,0 +1,38 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="Static" />
+    <BuildType Name="UnicodeDebug" />
+    <BuildType Name="UnicodeRelease" />
+    <Platform Name="Any CPU" />
+    <Platform Name="Win32" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="DuiLib/DuiLib.vcxproj">
+    <Platform Solution="*|Any CPU" Project="Win32" />
+  </Project>
+  <Project Path="DuilibPreview/DuilibPreview/DuilibPreview.vcxproj">
+    <BuildType Solution="Debug|*" Project="UnicodeRelease" />
+    <BuildType Solution="Release|*" Project="UnicodeRelease" />
+    <BuildType Solution="Static|*" Project="UnicodeRelease" />
+    <BuildType Solution="UnicodeDebug|Any CPU" Project="StaticUnicodeRelease" />
+    <BuildType Solution="UnicodeDebug|Win32" Project="StaticUnicodeRelease" />
+    <BuildType Solution="UnicodeDebug|x64" Project="UnicodeRelease" />
+    <Platform Solution="*|Any CPU" Project="Win32" />
+  </Project>
+  <Project Path="QuickLook.Common/QuickLook.Common.csproj">
+    <BuildType Solution="Static|*" Project="Release" />
+    <BuildType Solution="UnicodeDebug|*" Project="Release" />
+    <BuildType Solution="UnicodeRelease|*" Project="Release" />
+    <Platform Solution="Debug|x64" Project="x64" />
+    <Platform Solution="Static|x64" Project="x64" />
+    <Platform Solution="UnicodeDebug|x64" Project="x64" />
+    <Platform Solution="UnicodeRelease|x64" Project="x64" />
+  </Project>
+  <Project Path="QuickLook.Plugin.DuilibPreview/QuickLook.Plugin.DuilibPreview.csproj">
+    <BuildType Solution="Static|*" Project="Release" />
+    <BuildType Solution="UnicodeDebug|*" Project="Release" />
+    <BuildType Solution="UnicodeRelease|*" Project="Release" />
+  </Project>
+</Solution>
