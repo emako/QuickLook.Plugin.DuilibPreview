@@ -61,6 +61,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ib/
+UnicodeDebug/
+UnicodeRelease/
 
 # Visual Studio 2015 cache/options directory
 .vs/
