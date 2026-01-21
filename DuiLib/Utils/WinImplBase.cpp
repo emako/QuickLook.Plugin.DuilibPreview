@@ -278,8 +278,16 @@ LRESULT WindowImplBase::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 	CDuiString strResourcePath=m_PaintManager.GetResourcePath();
 	if (strResourcePath.IsEmpty())
 	{
-		strResourcePath=m_PaintManager.GetInstancePath();
-		strResourcePath+=GetSkinFolder().GetData();
+		CDuiString skinFolder = GetSkinFolder();
+		if (skinFolder.Find(_T(":")) != -1 || (skinFolder.GetLength() >= 2 && skinFolder.Left(2) == _T("\\\\")))
+		{
+			strResourcePath = skinFolder;
+		}
+		else
+		{
+			strResourcePath=m_PaintManager.GetInstancePath();
+			strResourcePath+=skinFolder;
+		}
 	}
 	m_PaintManager.SetResourcePath(strResourcePath.GetData());
 
@@ -329,10 +337,19 @@ LRESULT WindowImplBase::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 	ASSERT(pRoot);
 	if (pRoot==NULL)
 	{
-		MessageBox(NULL,_T("加载资源文件失败"),_T("Duilib"),MB_OK|MB_ICONERROR);
+		CDuiString msg;
+		msg.Format(_T("Internal Error: 加载资源文件失败\nXML: %s\nPath: %s"), GetSkinFile().GetData(), m_PaintManager.GetResourcePath().GetData());
+		MessageBox(NULL, msg.GetData(), _T("Duilib Internal (CPP)"), MB_OK|MB_ICONERROR);
 		//ExitProcess(1);
 		return 0;
 	}
+
+	// Fallback: If InitSize is not set by <Window> tag, try using Root Layout size
+	if (m_PaintManager.GetInitSize().cx == 0 && pRoot->GetFixedWidth() > 0 && pRoot->GetFixedHeight() > 0)
+	{
+		m_PaintManager.SetInitSize(pRoot->GetFixedWidth(), pRoot->GetFixedHeight());
+	}
+
 	m_PaintManager.AttachDialog(pRoot);
 	m_PaintManager.AddNotifier(this);
 

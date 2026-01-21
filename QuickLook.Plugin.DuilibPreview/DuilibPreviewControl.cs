@@ -34,7 +34,7 @@ public class DuilibPreviewControl : HwndHost
                 }
                 finally
                 {
-                    SetDllDirectory(null);
+                    SetDllDirectory(null!);
                 }
             }
 
@@ -99,6 +99,30 @@ public class DuilibPreviewControl : HwndHost
             _dllHandle = IntPtr.Zero;
         }
     }
+
+    public void GetDefinitionSize(out int width, out int height)
+    {
+        width = 0;
+        height = 0;
+        string assemblyDir = Path.GetDirectoryName(typeof(DuilibPreviewControl).Assembly.Location);
+
+        SetDllDirectory(assemblyDir);
+        try
+        {
+            GetDuilibXmlDefinitionSize(_path, out width, out height);
+        }
+        catch
+        {
+            // ignore
+        }
+        finally
+        {
+            SetDllDirectory(null);
+        }
+    }
+
+    [DllImport("DuilibPreview.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void GetDuilibXmlDefinitionSize(string xmlPath, out int width, out int height);
 
     [DllImport("DuilibPreview.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern IntPtr CreateDuilibPreview(IntPtr hParent, string xmlPath);

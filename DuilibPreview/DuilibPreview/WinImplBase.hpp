@@ -243,8 +243,17 @@ public:
 		m_PaintManager.AddPreMessageFilter(this);
 
 		CDialogBuilder builder;
-		CDuiString strResourcePath=m_PaintManager.GetInstancePath();
-		strResourcePath+=GetSkinFolder().c_str();
+		CDuiString skinFolder = GetSkinFolder();
+		CDuiString strResourcePath;
+		if (skinFolder.Find(_T(":")) != -1 || (skinFolder.GetLength() >= 2 && skinFolder.Left(2) == _T("\\\\")))
+		{
+			strResourcePath = skinFolder;
+		}
+		else
+		{
+			strResourcePath = m_PaintManager.GetInstancePath();
+			strResourcePath += skinFolder;
+		}
 		m_PaintManager.SetResourcePath(strResourcePath.c_str());
 
 		switch(GetResourceType())
@@ -286,7 +295,9 @@ public:
 		ASSERT(pRoot);
 		if (pRoot==NULL)
 		{
-			MessageBox(NULL,_T("加载资源文件失败"),_T("Duilib"),MB_OK|MB_ICONERROR);
+			CDuiString msg;
+			msg.Format(_T("加载资源文件失败\nXML: %s\nPath: %s"), GetSkinFile().GetData(), m_PaintManager.GetResourcePath().GetData());
+			MessageBox(NULL, msg.GetData(), _T("DuilibPreview (HPP)"), MB_OK|MB_ICONERROR);
 			//ExitProcess(1);
 			return 0;
 		}

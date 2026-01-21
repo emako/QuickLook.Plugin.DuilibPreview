@@ -12,6 +12,11 @@ DuiLib::CDuiString CPreviewWnd::GetSkinFile()
 	return m_skinFile;
 }
 
+SIZE CPreviewWnd::GetInitSize()
+{
+	return m_PaintManager.GetInitSize();
+}
+
 LPCTSTR CPreviewWnd::GetWindowClassName( void ) const
 {
 	return _T("PreviewWnd");

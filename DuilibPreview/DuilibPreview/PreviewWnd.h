@@ -9,6 +9,7 @@ public:
 
 	virtual CDuiString GetSkinFile();
 	virtual CDuiString GetSkinFolder();
+	virtual SIZE GetInitSize();
 	virtual LPCTSTR GetWindowClassName( void ) const;
 	virtual void Notify( TNotifyUI &msg );
 	virtual LRESULT OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled);
